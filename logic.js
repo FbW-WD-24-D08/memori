@@ -9,7 +9,10 @@ clearCards();
 
 function clearCards() {
   cards.forEach((card) => {
-    card.innerText = "";
+    if (!card.classList.contains("found")) {
+      // فقط کارت‌های پیدا نشده را پاک می‌کنیم
+      card.innerText = "";
+    }
   });
 }
 
@@ -21,12 +24,24 @@ cards.forEach((card) => {
       tempCount = 1;
       tempNumber = 0;
     }
+
+    // اگر کارت قبلاً پیدا شده باشد، هیچ کاری نکنید
+    if (event.target.classList.contains("found")) {
+      return;
+    }
+
     event.target.innerText = event.target.id;
     if (tempNumber !== 0) {
       if (tempNumber === parseInt(event.target.id)) {
         if (!foundNumbers.includes(tempNumber)) {
           foundNumbers.push(tempNumber);
           countTitle.innerText = `${parseInt(countTitle.innerText) + 1}`;
+          event.target.classList.add("found"); // کارت را به عنوان پیدا شده علامت‌گذاری کنید
+          cards.forEach((c) => {
+            if (parseInt(c.id) === tempNumber) {
+              c.classList.add("found"); // کارت دوم را نیز علامت‌گذاری کنید
+            }
+          });
         }
       }
     }
