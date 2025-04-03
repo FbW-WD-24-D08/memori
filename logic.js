@@ -1,10 +1,11 @@
 let count = 0;
-const countTitle = document.getElementById("count");
+const countTitle = document.getElementById("scoreValue");
 
 let tempCount = 1;
 const foundNumbers = [];
 
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".cell");
+clearCards();
 
 function clearCards() {
   cards.forEach((card) => {
