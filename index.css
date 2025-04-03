@@ -35,3 +35,8 @@
     transform: scale(1.05);
   }
 }
+
+.cell.found {
+  background-color: #d4edda; /* رنگ پس‌زمینه متفاوت */
+  border: 1px solid #c3e6cb; /* رنگ مرز متفاوت */
+}
